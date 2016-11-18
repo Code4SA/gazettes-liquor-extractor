@@ -1,20 +1,25 @@
 import regex as mrab
+import config
 
 
 def scrub_content(content):
-    """Removing intro of file"""
+    """Removing unwanted sections of file
 
-    remove_intro = mrab.sub(r'(?is)\A.*?limpopo\s*(?=praktiseer)', '', content)
-    return remove_intro
+    This version only addresses the intro up to a hard-coded point.
+    Future versions should:
+     * look for a more generic delimiter
+     * add "scrub" operations before returning.
+    """
+
+    scrubbed = mrab.sub(r'(?is)\A.*?limpopo\s*(?=praktiseer)', '', content)
+    # TODO
+    # scrubbed = some_other_operation(scrubbed)
+    # scrubbed = some_other_operation(scrubbed)
+    return scrubbed
 
 
 def print_licensee(licensee):
-    print('Title:', licensee['Title'])
-    print('Licensee Details:',licensee['Licensee Details'])
-    print('License Type', licensee['License Type'])
-    print('Liquor Type', licensee['Liquor Type'])
-    print('Full Address', licensee['Full Address'])
-    print('Business Name', licensee['Business Name'])
+    titles = config.section_titles
+    for title in titles:
+        print(title + ':', licensee[title])
     print('\n')
-
-
