@@ -23,23 +23,18 @@ for file_name in config.files:
             licensee[title] = match.group(i).strip()
         licensees.append(licensee)
 
-    for licensee in licensees:
-        print_licensee(licensee)
-    raise SystemExit
-
-    unpicked = simple_match.sub('', scrubbbed_content)
+    unpicked = simple_match_regex.sub('', scrubbed_content)
     doubles = doubles_regex.finditer(unpicked)
-    for fruit in doubles:
-        # Each fruit contains two licensees. Add them both.
+    for double in doubles:
+        # Each double contains two licensees. Add them both.
         licensee = dict()
-        for i, title in zip(list(range(1, 14, 2)), config.section_titles):
-            licensee[title] = fruit.group(i).strip()
+        for i, title in zip(list(range(2, 13, 2)), config.section_titles):
+            licensee[title] = double.group(i).strip()
         licensees.append(licensee)
 
-        # Each fruit contains two licensees. Add them both.
         licensee = dict()
-        for i, title in zip(list(range(2, 15, 2)), config.section_titles):
-            licensee[title] = fruit.group(i).strip()
+        for i, title in zip(list(range(3, 14, 2)), config.section_titles):
+            licensee[title] = double.group(i).strip()
         licensees.append(licensee)
 
     for licensee in licensees:

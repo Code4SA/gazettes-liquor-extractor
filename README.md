@@ -4,6 +4,14 @@ This first draft of this script was banged together out of curiosity at a Codebr
  
 The purpose of the exercise was to determine whether a data processing pipeline can be established to extract liquor licensees from the gazettes. 
 
+## TL;DR
+
+After a non-comprehensive exploration of the extraction task, most of the data is successfully extracted -- but with occasional hiccups due to the unreliable nature of the input (PDF files converted to text). 
+
+ * If a fail-safe extraction is needed, this method is not recommended. In some places, the extraction yields "doubles" which are not separated. Because of the columnar nature of the data, these doubles are less reliable. It is possible to interrupt the extraction after the "simple matches" phase.
+ * Instances such as the `(1)` in *(4)  Tsakani Tavern: Section 41(1)(A)(C)* throw the script off its game.
+ * If *something is better than nothing*, this script can be extended, for instance by storing the data in a usable format.
+
 ## Usage
 
  * Add text files to the *files* folder
