@@ -20,9 +20,7 @@ In its present state, the script assumes that the PDF files have been converted 
  
  In turn, the `regex` module is one of the best-rounded regular expression engines around.
  
- ## Resources
- 
- Miscellaneous links and thoughts:
+## Resources
  
   * [Python regular expressions: Regex vs. re](http://www.rexegg.com/regex-python.html#missing_in_re)
   
