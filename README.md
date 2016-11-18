@@ -22,5 +22,6 @@ In its present state, the script assumes that the PDF files have been converted 
  
  ## Resources
  
+ 
   * [Python regular expressions: Regex vs. re](http://www.rexegg.com/regex-python.html#missing_in_re)
   
