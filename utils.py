@@ -1,5 +1,5 @@
-import regex as mrab
 import config
+import liquor_regex
 
 
 def scrub_content(content):
@@ -11,7 +11,9 @@ def scrub_content(content):
      * add "scrub" operations before returning.
     """
 
-    scrubbed = mrab.sub(r'(?is)\A.*?limpopo\s*(?=praktiseer)', '', content)
+    scrubbed = liquor_regex.intro_regex.sub('', content)
+    # print(scrubbed[:200]) # check that intro was removed
+
     # TODO
     # scrubbed = some_other_operation(scrubbed)
     # scrubbed = some_other_operation(scrubbed)

@@ -1,10 +1,13 @@
+import os
+
 import config
 from utils import scrub_content, print_licensee
 from liquor_regex import low_hanging_regex, doubles_regex
 
 licensees = []
 
-for file_path in config.files:
+for file_name in config.files:
+    file_path = os.path.join(config.path_for_gazettes, file_name)
 
     with open(file_path, 'rt') as f:
         content = f.read()
@@ -37,3 +40,5 @@ for file_path in config.files:
         print_licensee(licensee)
 
     unpicked = doubles_regex.sub('', unpicked)
+
+    # TODO: do something with unpicked

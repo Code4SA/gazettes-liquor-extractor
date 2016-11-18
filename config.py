@@ -1,9 +1,10 @@
+path_for_gazettes = 'files'
 files = ['liquor licenses.txt']
 
 section_titles = ['Name',
-                  'Details',
-                  'License Type',
+                  'Applicant Details',
+                  'License Category',
                   'Liquor Type',
-                  'Full Address',
-                  'Business Name'
+                  'Business Details',
+                  'Authority'
                   ]

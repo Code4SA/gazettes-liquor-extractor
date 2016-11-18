@@ -1,5 +1,18 @@
 import regex as mrab
 
+
+intro_regex = mrab.compile(r'''(?xsm)
+(?(DEFINE)(?<bracketed_digit>\([1-5]\)))
+(?>\A.*?BYLAE)
+(?>(?!(?&bracketed_digit)).)*\(1\)
+(?>(?!(?&bracketed_digit)).)*\(2\)
+(?>(?!(?&bracketed_digit)).)*\(3\)
+(?>(?!(?&bracketed_digit)).)*\(4\)
+(?>(?!(?&bracketed_digit)).)*\(5\)
+.*?
+^$\s*
+''')
+
 low_hanging_regex = mrab.compile(r"""(?sxm)
 # First line
 (^[^\r\n]*)[\r\n]+

@@ -3,6 +3,12 @@
 This first draft of this script was banged together out of curiosity at a Codebridge community evening. In its current state, it should be considered a very rough skeleton to be built upon or abandoned.
  
 The purpose of the exercise was to determine whether a data processing pipeline can be established to extract liquor licensees from the gazettes. 
+
+## Usage
+
+ * Add text files to the *files* folder
+ * For the moment, add them manually to the *files* list in *config.py*
+ * Run __main__.py
  
 ## Converting before processing
 
