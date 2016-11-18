@@ -13,23 +13,32 @@ intro_regex = mrab.compile(r'''(?xsm)
 ^$\s*
 ''')
 
-low_hanging_regex = mrab.compile(r"""(?sxm)
-# First line
-(^[^\r\n]*)[\r\n]+
-# (1)
-(\(1\)(?:(?!\(1).)*?(?=\(2))
-\s*
-# (2)
-(\(2\)(?:(?!\(2).)*?(?=\(3))
-\s*
-# (3)
-(\(3\)(?:(?!\(3).)*?(?=\(4))
-\s*
-# (4)
-(\(4\)(?:(?!\(4).)*?(?=\(5))
-\s*
-# (5)
-(\(5\)(?:(?!\(5).)*?(?=[\r\n]+^$))
+
+simple_match_regex = mrab.compile(r"""(?xm)
+(?(DEFINE)(?<bracketed_digit>\([1-5]\)))
+
+# Name Line (sometimes empty)
+(?>(?P<Name>.*)\n)
+
+# (1) Applicant
+\(1\)\s*
+(?P<Applicant>(?>(?!(?&bracketed_digit))[\d\D])*)(?=\(2\))
+
+# (2) License Category
+\(2\)\s*
+(?P<LicenseCat>(?>(?!(?&bracketed_digit))[\d\D])*)(?=\(3\))
+
+# (3) Liquor Type
+\(3\)\s*
+(?P<LiquorType>(?>(?!(?&bracketed_digit))[\d\D])*)(?=\(4\))
+
+# (4) Business Details
+\(4\)\s*
+(?P<Business>(?>(?!(?&bracketed_digit))[\d\D])*)(?=\(5\))
+
+# (5) Authority: just grab the first line
+\(5\)\s*(?P<Authority>.*)
+
 """)
 
 doubles_regex = mrab.compile(r'''(?smx)

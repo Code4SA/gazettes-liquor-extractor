@@ -5,10 +5,8 @@ import liquor_regex
 def scrub_content(content):
     """Removing unwanted sections of file
 
-    This version only addresses the intro up to a hard-coded point.
-    Future versions should:
-     * look for a more generic delimiter
-     * add "scrub" operations before returning.
+    This version only addresses the intro.
+    Future versions should add "scrub" operations before returning.
     """
 
     scrubbed = liquor_regex.intro_regex.sub('', content)

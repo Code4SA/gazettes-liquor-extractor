@@ -2,7 +2,7 @@ import os
 
 import config
 from utils import scrub_content, print_licensee
-from liquor_regex import low_hanging_regex, doubles_regex
+from liquor_regex import simple_match_regex, doubles_regex
 
 licensees = []
 
@@ -12,16 +12,22 @@ for file_name in config.files:
     with open(file_path, 'rt') as f:
         content = f.read()
 
-    clean_content = scrub_content(content)
-    low_hanging_fruit = low_hanging_regex.finditer(clean_content)
+    scrubbed_content = scrub_content(content)
 
-    for fruit in low_hanging_fruit:
+    simple_matches = simple_match_regex.finditer(scrubbed_content)
+
+    for match in simple_matches:
+
         licensee = dict()
-        for i, title in enumerate(config.section_titles, start=1):
-            licensee[title] = fruit.group(i).strip()
+        for i, title in enumerate(config.section_titles, start=2):
+            licensee[title] = match.group(i).strip()
         licensees.append(licensee)
 
-    unpicked = low_hanging_regex.sub('', clean_content)
+    for licensee in licensees:
+        print_licensee(licensee)
+    raise SystemExit
+
+    unpicked = simple_match.sub('', scrubbbed_content)
     doubles = doubles_regex.finditer(unpicked)
     for fruit in doubles:
         # Each fruit contains two licensees. Add them both.
